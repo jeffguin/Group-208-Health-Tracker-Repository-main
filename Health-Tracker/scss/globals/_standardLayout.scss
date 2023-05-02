@@ -1,0 +1,65 @@
+@use "colours";
+@use "fonts";
+
+html {
+	box-sizing: border-box;
+	font-size: 100%;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--background-colour);
+	color: var(--default-page-font-colour);
+	font-family: var(--default-font);
+	font-size: var(--default-font-size);
+	font-weight: var(--default-font-weight);
+}
+
+p {
+	padding: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+	margin-top: 0;
+}
+
+div .error {
+	font-size: var(--default-error-message-size);
+	color: rgb(187, 5, 5);
+}
+
+header {
+	color: var(--default-component-font-colour);
+}
+
+a {
+	border-bottom: thin solid;
+	color: rgb(4, 136, 212);
+	text-decoration: none;
+	transition: 500ms;
+}
+
+a:active,
+a:hover {
+	font-size: calc(var(--default-nav-font-size) + 1px);
+	color: rgb(14, 124, 0);
+	border-bottom-width: medium;
+	transition: 300ms;
+}
+
+a:active {
+	color: rgb(192, 0, 0);
+}

@@ -1,0 +1,67 @@
+<!--"information" to the browser about what document type to expect. -->
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Health Tracker Login Page</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Used to set the browser tab icon to an Apple -->
+		<link rel="icon" href="images/smallLogoCircle.png" />
+		<!-- Link used to get Lato font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="./css-style/authenticationStyle.css" />
+		<script type="module" src="./javascript/loginJava.js" defer></script>
+	</head>
+
+	<body>
+		<header></header>
+
+		<main>
+			<div class="loginContainer">
+				<img id="healthTrackerLogo" src="images/logo-removebg-preview.png" alt="Health Tracker Logo" />
+
+				<h2>Sign in</h2>
+				<h3>with your Health Tracker Account</h3>
+
+				<form id="loginForm" name="LoginForm" class="form" onsubmit="return validation()" action="http://127.0.0.1:3000/getstring" method="POST">
+					<br /><label for="Username">Username:</label>
+					<input type="text" id="usernameTxt" class="authenticationField" placeholder="Enter username of your account.." />
+					<div id="usernameError"></div>
+
+					<br /><label for="Password">Password:</label>
+					<div class="passwordContainer">
+						<input type="password" id="passwordTxt" class="authenticationField" placeholder="Enter your account password..." />
+						<i class="fa fa-eye-slash" id="passwordShow"></i>
+					</div>
+
+					<div id="passwordError"></div>
+
+					<br />
+					<p id="forgot">
+						Forgot password?
+						<i
+							><b><u>Click here...</u></b></i
+						>
+					</p>
+
+					<button type="submit" id="loginBtn" class="submitBtn">Login</button>
+
+					<br />
+					<p>
+						<i>Alternatively click <a href="Register Page.html">here</a> to create a new account...</i>
+					</p>
+
+					<button type="button" id="skipAuthenticationBtn" class="submitBtn" onClick="window.location.href='Home.html';">
+						Skip authentication (temporary)
+					</button>
+					<p>Skip button is temporarily added to let us proceed to main health tracker pages while we implement a working login/register system.</p>
+				</form>
+			</div>
+		</main>
+
+		<footer></footer>
+	</body>
+</html>

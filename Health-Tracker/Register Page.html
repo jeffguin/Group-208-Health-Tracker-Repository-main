@@ -1,0 +1,117 @@
+<!--"information" to the browser about what document type to expect. -->
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Health Tracker Register Page</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Used to set the browser tab icon to an Apple -->
+		<link rel="icon" href="images/smallLogoCircle.png" />
+		<!-- Link used to get Lato font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="./css-style/authenticationStyle.css" />
+		<script type="module" src="./javascript/registerJava.js" defer></script>
+	</head>
+
+	<body>
+		<header></header>
+
+		<main>
+			<div class="registerContainer">
+				<img id="healthTrackerLogo" src="images/logo-removebg-preview.png" alt="Health Tracker Logo" />
+
+				<h2>Create new account</h2>
+				<h3>to access the Health Tracker</h3>
+				<br />
+
+				<form id="registerForm" name="RegisterForm" class="form" onsubmit="return validateRegisterForm()" action="" method="POST">
+					<fieldset>
+						<legend>Account Details</legend>
+						<!-- text entry boxes -->
+						<label for="Username">Username:</label>
+						<input type="text" id="usernameTxt" name="Username" class="authenticationField" placeholder="Create a username for your new account..." />
+						<div id="usernameTxtError" class="error"></div>
+
+						<label for="Password">Password:</label>
+						<div class="passwordContainer">
+							<input type="password" id="passwordTxt" name="Password" class="authenticationField" placeholder="Create a password for your new account..." />
+							<i class="fa fa-eye-slash" id="passwordShow"></i>
+						</div>
+						<div id="passwordTxtError" class="error"></div>
+
+						<label for="ConfirmPassword">Confirm Password:</label>
+						<div class="passwordContainer">
+							<input type="password" id="confirmPasswordTxt" name="ConfirmPassword" class="authenticationField" placeholder="Confirm your new password..." />
+							<i class="fa fa-eye-slash" id="passwordShow2"></i>
+						</div>
+						<div id="confirmPasswordTxtError" class="error"></div>
+					</fieldset>
+					<br />
+
+					<fieldset>
+						<legend>Personal Details</legend>
+						<!-- text entry boxes -->
+						<label for="Forename">Forename:</label>
+						<input type="text" id="forenameTxt" name="Forename" class="authenticationField" placeholder="Enter your forename..." />
+						<div id="forenameTxtError" class="error"></div>
+
+						<label for="Surname">Surname:</label>
+						<input type="text" id="surnameTxt" name="Surname" class="authenticationField" placeholder="Enter your surname..." />
+						<div id="surnameTxtError" class="error"></div>
+
+						<label for="Email">Email:</label>
+						<input type="email" id="emailTxt" name="Email" class="authenticationField" placeholder="Enter your email address..." />
+						<div id="emailTxtError" class="error"></div>
+
+						<label for="tel">Phone Number:</label>
+						<input type="tel" id="phoneTxt" name="Phone" class="authenticationField" placeholder="Enter your phone number..." />
+						<div id="phoneTxtError" class="error"></div>
+
+						<!-- date -->
+						<label for="birthday">Birthday:</label>
+						<input type="date" id="birthdayDT" name="Birthday" class="authenticationField" max="2000-10-12" min="1900-01-01" />
+						<div id="birthdayDTError" class="error"></div>
+
+						<!-- dropdown menus -->
+						<label for="gender">Gender:</label>
+						<select id="genderDD" name="Gender" class="authenticationField">
+							<option disabled selected value="Select your gender...">Select your gender...</option>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+							<option value="Other">Other</option>
+						</select>
+						<div id="genderDDError" class="error"></div>
+
+						<label for="ethnicity">Ethnicity:</label>
+						<select id="ethnicityDD" name="Ethnicity" class="authenticationField">
+							<option disabled selected value="Select your ethnicity...">Select your ethnicity...</option>
+							<option value="Asian">Asian or Asian British</option>
+							<option value="Black/African">Black, Black British, Caribbean or African</option>
+							<option value="Mixed">Mixed or multiple ethnic groups</option>
+							<option value="White">White</option>
+							<option value="Other">Other</option>
+						</select>
+						<div id="ethnicityDDError" class="error"></div>
+					</fieldset>
+					<br />
+
+					<button type="submit" id="registerBtn" class="submitBtn">Register</button>
+
+					<p>
+						<i
+							>Alternatively click <b><a href="Login Page.html">here</a></b> to login to your account...</i
+						>
+					</p>
+
+					<button type="button" id="skipAuthenticationBtn" class="submitBtn" onClick="window.location.href='Home.html';">
+						Skip authentication (temporary)
+					</button>
+					<p>Skip button is temporarily added to let us proceed to main health tracker pages while we implement a working login/register system.</p>
+				</form>
+			</div>
+		</main>
+	</body>
+</html>

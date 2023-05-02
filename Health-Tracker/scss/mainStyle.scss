@@ -1,0 +1,209 @@
+@forward "globals";
+@use "components" as c;
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	position: relative;
+
+	main {
+		margin: 3rem;
+	}
+
+	p {
+		margin: 0;
+
+		padding: 0;
+	}
+	h1 {
+		margin: 0;
+		margin-bottom: 0.5rem;
+
+		padding: 0;
+	}
+
+	h2 {
+		margin: 0;
+		margin-bottom: 0.5rem;
+
+		padding: 0;
+	}
+	h3 {
+		margin: 0;
+		margin-bottom: 1rem;
+		padding: 0;
+	}
+
+	header {
+		@include c.defaultHeader;
+	}
+
+	#topBtn {
+		/*Inherit style from backTopButton mixin*/
+		@include c.backTopButton;
+	}
+
+	dialog {
+		/*Inherit style from defaultLogoutDialog mixin*/
+		@include c.defaultLogoutDialog;
+	}
+
+	#dietForm {
+		background: white;
+		border: 4px solid #c300ff;
+		border-radius: 6px;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		#flexDietContainer {
+			border: 2px dashed yellow;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 2rem;
+			.dietBtn {
+				@include c.dietButton;
+			}
+			#leftDietContainer {
+				border: 2px solid rgb(156, 156, 255);
+				padding: 1rem;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+			}
+			#rightDietContainer {
+				border: 2px solid red;
+				padding: 1rem;
+				width: 70%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				#completeMealTxt {
+					width: 100%;
+					height: 20vh;
+				}
+			}
+		}
+		.dietField {
+			color: var(--default-font-colour);
+			width: 70%;
+			height: 3vh;
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+			border-radius: 5px;
+			background-color: transparent;
+			border: solid 1px black;
+		}
+	}
+
+	.homeContainer {
+		border: 3px solid blue;
+		margin: 1rem;
+		padding: 1rem;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 5px;
+		justify-content: space-around;
+	}
+
+	.homeDiv {
+		background-color: goldenrod;
+		border: 3px solid black;
+		width: 40%;
+		height: 10rem;
+	}
+
+	.profileContainer {
+		border: 3px solid red;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		gap: 2rem;
+		height: 10rem;
+		width: 40%;
+		overflow: hidden;
+		#profilePicture {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	footer {
+		/*Inherit style from defaultFooter mixin*/
+		@include c.defaultFooter;
+	}
+}
+
+/*-----------Media Queries for responsive design-----------*/
+/*Applies special rules to devices under 1245.5px*/
+@media screen and (max-width: 1245.5px) {
+	body header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	body header nav {
+		width: 100%;
+	}
+	body header nav ul {
+		display: none;
+		flex-direction: column;
+		padding: 0;
+	}
+	body header nav li {
+		text-align: center;
+		padding-bottom: 1rem;
+	}
+	header .mainNavBar {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	header .mainNavBar #mobileNavMenu {
+		display: flex;
+	}
+
+	body header nav ul.show {
+		display: flex;
+	}
+
+	body header #healthTrackerLogo {
+		max-width: 80%;
+		align-self: self-start;
+	}
+}
+
+/*Applies special rules to to devices under 500px*/
+@media screen and (max-width: 500px) {
+	body header #mobileNavMenu {
+		font-size: 30px;
+	}
+}
+
+/*Applies special rules to to devices under 800px*/
+@media screen and (max-width: 800px) {
+	body main dialog {
+		padding: 0;
+		width: 70vw;
+	}
+}
+/*Applies special rules to to devices under 440px*/
+@media screen and (max-width: 440px) {
+	/*Logout icons are hidden onces the device viewport gets to small*/
+	body main dialog .logoutButtons .gg-check-o,
+	body main dialog .logoutButtons .gg-close-o {
+		display: none;
+	}
+}

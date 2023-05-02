@@ -1,0 +1,111 @@
+@forward "globals";
+@use "components" as c;
+
+body {
+	color: var(--default-component-font-colour);
+	margin: 3rem;
+
+	.loginContainer,
+	.registerContainer {
+		border-radius: 10px;
+		background-color: var(--authentication-window-colour);
+		border: 6px solid white;
+		padding: 3rem;
+		/*Centers loginContainer horizontally*/
+		margin-inline: auto;
+		min-height: 28rem;
+		/*Max-width is set so that the loginContainer lines up with the logo when viewport is expanded*/
+		max-width: 568px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		#healthTrackerLogo {
+			@include c.defaultLogoStyle;
+		}
+
+		h2 {
+			margin-bottom: 0.5rem;
+		}
+
+		h3 {
+			margin: 0;
+		}
+
+		/*Display is set to flex to allow children to use align-self property*/
+		#loginForm,
+		#registerForm {
+			display: flex;
+			flex-direction: column;
+
+			legend {
+				border: 2px solid white;
+				padding: 4px;
+			}
+
+			label {
+				display: block;
+				margin-top: 0.5rem;
+			}
+
+			.authenticationField {
+				color: var(--default-font-colour);
+				width: 100%;
+				height: 3vh;
+				margin-top: 0.5rem;
+				border-radius: 5px;
+				background-color: transparent;
+				border: none;
+				border-bottom-style: dashed;
+				border-color: white;
+			}
+
+			.passwordContainer {
+				position: relative;
+
+				#passwordShow,
+				#passwordShow2 {
+					@include c.showPasswordEye;
+				}
+			}
+
+			.submitBtn {
+				@include c.submitButton;
+			}
+
+			p {
+				align-self: center;
+				padding: 0;
+			}
+
+			#forgot {
+				align-self: flex-start;
+				font-size: 0.9rem;
+			}
+
+			#birthdayDT,
+			#genderDD,
+			#ethnicityDD {
+				/*Changes calendar icon on date input to white*/
+				color-scheme: dark;
+				border-style: dashed;
+				background-color: var(--authentication-window-colour);
+				/*Inherits its value from its parent element*/
+				font: inherit;
+				height: inherit;
+				cursor: pointer;
+			}
+		}
+	}
+}
+/*Applies special rules to to devices under 550px*/
+@media screen and (max-width: 550px) {
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	body .loginContainer {
+		padding: 1rem;
+	}
+}

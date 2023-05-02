@@ -1,0 +1,290 @@
+:root {
+  --background-colour: rgb(209, 239, 253);
+  --authentication-window-colour: rgb(28, 1, 47);
+  --default-page-font-colour: black;
+  --default-component-font-colour: white;
+  --default-button-colour: rgb(2, 123, 123);
+}
+
+:root {
+  --default-font: "Lato", sans-serif;
+  --default-font-size: clamp(0.8rem, 1.25vw, 1.25rem);
+  --default-font-weight: 500;
+  --default-eye-size: clamp(1rem, 1.2vw, 1.5rem);
+  --default-error-message-size: clamp(0.8rem, 1vw, 1rem);
+  --default-nav-font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-colour);
+  color: var(--default-page-font-colour);
+  font-family: var(--default-font);
+  font-size: var(--default-font-size);
+  font-weight: var(--default-font-weight);
+}
+
+p {
+  padding: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+div .error {
+  font-size: var(--default-error-message-size);
+  color: rgb(187, 5, 5);
+}
+
+header {
+  color: var(--default-component-font-colour);
+}
+
+a {
+  border-bottom: thin solid;
+  color: rgb(4, 136, 212);
+  text-decoration: none;
+  transition: 500ms;
+}
+
+a:active,
+a:hover {
+  font-size: calc(var(--default-nav-font-size) + 1px);
+  color: rgb(14, 124, 0);
+  border-bottom-width: medium;
+  transition: 300ms;
+}
+
+a:active {
+  color: rgb(192, 0, 0);
+}
+
+/*Mixins used to create re-usable styles that can be used across SCSS stylesheets*/
+/*Functions used to create complex and re-usable operations that can be used across SCSS stylesheets*/
+body {
+  color: var(--default-component-font-colour);
+  margin: 3rem;
+}
+body .loginContainer,
+body .registerContainer {
+  border-radius: 10px;
+  background-color: var(--authentication-window-colour);
+  border: 6px solid white;
+  padding: 3rem;
+  /*Centers loginContainer horizontally*/
+  margin-inline: auto;
+  min-height: 28rem;
+  /*Max-width is set so that the loginContainer lines up with the logo when viewport is expanded*/
+  max-width: 568px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*Display is set to flex to allow children to use align-self property*/
+}
+body .loginContainer #healthTrackerLogo,
+body .registerContainer #healthTrackerLogo {
+  max-width: 100%;
+  margin: 1rem;
+  align-self: center;
+}
+body .loginContainer h2,
+body .registerContainer h2 {
+  margin-bottom: 0.5rem;
+}
+body .loginContainer h3,
+body .registerContainer h3 {
+  margin: 0;
+}
+body .loginContainer #loginForm,
+body .loginContainer #registerForm,
+body .registerContainer #loginForm,
+body .registerContainer #registerForm {
+  display: flex;
+  flex-direction: column;
+}
+body .loginContainer #loginForm legend,
+body .loginContainer #registerForm legend,
+body .registerContainer #loginForm legend,
+body .registerContainer #registerForm legend {
+  border: 2px solid white;
+  padding: 4px;
+}
+body .loginContainer #loginForm label,
+body .loginContainer #registerForm label,
+body .registerContainer #loginForm label,
+body .registerContainer #registerForm label {
+  display: block;
+  margin-top: 0.5rem;
+}
+body .loginContainer #loginForm .authenticationField,
+body .loginContainer #registerForm .authenticationField,
+body .registerContainer #loginForm .authenticationField,
+body .registerContainer #registerForm .authenticationField {
+  color: var(--default-font-colour);
+  width: 100%;
+  height: 3vh;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+  border-bottom-style: dashed;
+  border-color: white;
+}
+body .loginContainer #loginForm .passwordContainer,
+body .loginContainer #registerForm .passwordContainer,
+body .registerContainer #loginForm .passwordContainer,
+body .registerContainer #registerForm .passwordContainer {
+  position: relative;
+}
+body .loginContainer #loginForm .passwordContainer #passwordShow,
+body .loginContainer #loginForm .passwordContainer #passwordShow2,
+body .loginContainer #registerForm .passwordContainer #passwordShow,
+body .loginContainer #registerForm .passwordContainer #passwordShow2,
+body .registerContainer #loginForm .passwordContainer #passwordShow,
+body .registerContainer #loginForm .passwordContainer #passwordShow2,
+body .registerContainer #registerForm .passwordContainer #passwordShow,
+body .registerContainer #registerForm .passwordContainer #passwordShow2 {
+  font-size: var(--default-eye-size);
+  /*Position is set to absolute to allow eye icons to be placed inside the password field*/
+  position: absolute;
+  top: 32%;
+  right: 1%;
+  cursor: pointer;
+  transition: 500ms;
+  /*Colour of eye icon will change to green if the user hovers or focuses on the icon*/
+}
+body .loginContainer #loginForm .passwordContainer #passwordShow:hover, body .loginContainer #loginForm .passwordContainer #passwordShow:focus,
+body .loginContainer #loginForm .passwordContainer #passwordShow2:hover,
+body .loginContainer #loginForm .passwordContainer #passwordShow2:focus,
+body .loginContainer #registerForm .passwordContainer #passwordShow:hover,
+body .loginContainer #registerForm .passwordContainer #passwordShow:focus,
+body .loginContainer #registerForm .passwordContainer #passwordShow2:hover,
+body .loginContainer #registerForm .passwordContainer #passwordShow2:focus,
+body .registerContainer #loginForm .passwordContainer #passwordShow:hover,
+body .registerContainer #loginForm .passwordContainer #passwordShow:focus,
+body .registerContainer #loginForm .passwordContainer #passwordShow2:hover,
+body .registerContainer #loginForm .passwordContainer #passwordShow2:focus,
+body .registerContainer #registerForm .passwordContainer #passwordShow:hover,
+body .registerContainer #registerForm .passwordContainer #passwordShow:focus,
+body .registerContainer #registerForm .passwordContainer #passwordShow2:hover,
+body .registerContainer #registerForm .passwordContainer #passwordShow2:focus {
+  color: rgb(14, 124, 0);
+  font-size: calc(var(--default-eye-size) + 2px);
+  /*Sets a transition duration of 300ms allowing for a smooth expand effect*/
+  transition: 300ms;
+}
+body .loginContainer #loginForm .submitBtn,
+body .loginContainer #registerForm .submitBtn,
+body .registerContainer #loginForm .submitBtn,
+body .registerContainer #registerForm .submitBtn {
+  color: var(--default-component-font-colour);
+  background-color: var(--default-button-colour);
+  border: 3px solid white;
+  border-radius: 5px;
+  font-weight: bold;
+  min-height: 2.5rem;
+  width: 30%;
+  /*Position is set to relative to allow "border expand effect" to be placed over the button*/
+  position: relative;
+  align-self: center;
+  cursor: pointer;
+}
+body .loginContainer #loginForm .submitBtn::before,
+body .loginContainer #registerForm .submitBtn::before,
+body .registerContainer #loginForm .submitBtn::before,
+body .registerContainer #registerForm .submitBtn::before {
+  /*Position is set to absolute to allow "border expand effect" to be placed inside the button*/
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /*Z-index is set to -1 to hide the "border expand effect" if button isn't hovered over or focused on*/
+  z-index: -1;
+  border: none;
+  border-radius: 5px;
+  /*Sets a transition duration of 400ms allowing for a smooth expand effect*/
+  transition: 400ms;
+}
+body .loginContainer #loginForm .submitBtn:focus::before, body .loginContainer #loginForm .submitBtn:hover::before,
+body .loginContainer #registerForm .submitBtn:focus::before,
+body .loginContainer #registerForm .submitBtn:hover::before,
+body .registerContainer #loginForm .submitBtn:focus::before,
+body .registerContainer #loginForm .submitBtn:hover::before,
+body .registerContainer #registerForm .submitBtn:focus::before,
+body .registerContainer #registerForm .submitBtn:hover::before {
+  border: 3px solid white;
+  top: -9px;
+  bottom: -9px;
+  right: -9px;
+  left: -9px;
+  /*Z-index is set to 1 to show the "border expand effect" if button if hovered or focused on*/
+  z-index: 1;
+  transition: 200ms;
+}
+body .loginContainer #loginForm p,
+body .loginContainer #registerForm p,
+body .registerContainer #loginForm p,
+body .registerContainer #registerForm p {
+  align-self: center;
+  padding: 0;
+}
+body .loginContainer #loginForm #forgot,
+body .loginContainer #registerForm #forgot,
+body .registerContainer #loginForm #forgot,
+body .registerContainer #registerForm #forgot {
+  align-self: flex-start;
+  font-size: 0.9rem;
+}
+body .loginContainer #loginForm #birthdayDT,
+body .loginContainer #loginForm #genderDD,
+body .loginContainer #loginForm #ethnicityDD,
+body .loginContainer #registerForm #birthdayDT,
+body .loginContainer #registerForm #genderDD,
+body .loginContainer #registerForm #ethnicityDD,
+body .registerContainer #loginForm #birthdayDT,
+body .registerContainer #loginForm #genderDD,
+body .registerContainer #loginForm #ethnicityDD,
+body .registerContainer #registerForm #birthdayDT,
+body .registerContainer #registerForm #genderDD,
+body .registerContainer #registerForm #ethnicityDD {
+  /*Changes calendar icon on date input to white*/
+  color-scheme: dark;
+  border-style: dashed;
+  background-color: var(--authentication-window-colour);
+  /*Inherits its value from its parent element*/
+  font: inherit;
+  height: inherit;
+  cursor: pointer;
+}
+
+/*Applies special rules to to devices under 550px*/
+@media screen and (max-width: 550px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body .loginContainer {
+    padding: 1rem;
+  }
+}/*# sourceMappingURL=authenticationStyle.css.map */

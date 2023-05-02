@@ -1,0 +1,148 @@
+<!--"information" to the browser about what document type to expect. -->
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Settings Page</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Used to set the browser tab icon to an Apple -->
+		<link rel="icon" href="images/smallLogoCircle.png" />
+		<!-- Link used to get Lato font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<!-- Link used to get mobile navigation bar icon -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<!-- Link used to get logout icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/log-out.css" rel="stylesheet" />
+		<!-- Link used to get back to top icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/push-up.css" rel="stylesheet" />
+		<!-- Link used to get tick icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/check-o.css" rel="stylesheet" />
+		<!-- Link used to get X icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css" rel="stylesheet" />
+		<link rel="stylesheet" href="./css-style/mainStyle.css" />
+		<script type="module" src="./javascript/mainJava.js" defer></script>
+	</head>
+	<body>
+	<!--========================================NAV======================================================== -->
+		<header>
+			<div class="mainNavBar">
+				<img id="healthTrackerLogo" src="images/logo-removebg-preview.png" alt="Health Tracker Logo" />
+				<i class="fa fa-bars" id="mobileNavMenu"></i>
+			</div>
+
+			<nav class="navigation">
+				<ul>
+					<li><a href="Home.html">Homepage</a></li>
+					<li><a href="Exercise.html">Exercise</a></li>
+					<li><a href="Diet.html">Dieting</a></li>
+					<li><a href="Friend.html">Friends</a></li>
+					<li><a href="Group.html">Groups</a></li>
+					<li><a href="History.html">History</a></li>
+					<li class="currentPage"><a href="Settings.html">Settings</a></li>
+				</ul>
+			</nav>
+			<i class="fa fa-bars" id="mobileNavMenu"></i>
+		</header>
+
+	<!-- ==========================================Content======================================================-->
+	<!--top side--------------------------------------------------------->
+	<main>
+			<h1>Settings</h1>
+			<br>
+			<h3>If you need to change your account settings, please contact <a href="CMPofficialemail@gmail.com">CMPofficialemail@gmail.com</a></h3>
+			<hr><br>
+			note: profile pic and name will be displayed here
+			<hr><br>
+		<fieldset class="settingsBox">
+			<legend class="settingsLegend">Edit profile</legend>
+
+			<label for="Forename">Forename:</label>
+			<input type="text" id="forenameTxt" name="Forename" class="authenticationField" placeholder="Enter your forename..." />
+			<div id="forenameTxtError" class="error"></div>
+			<br>
+
+			<label for="Surname">Surname:</label>
+			<input type="text" id="surnameTxt" name="Surname" class="authenticationField" placeholder="Enter your surname..." />
+			<div id="surnameTxtError" class="error"></div>
+			<br>
+			<label for="Email">Email:</label>
+			<input type="email" id="emailTxt" name="Email" class="authenticationField" placeholder="Enter your email address..." />
+			<div id="emailTxtError" class="error"></div>
+			<br>
+			<label for="tel">Phone Number:</label>
+			<input type="tel" id="phoneTxt" name="Phone" class="authenticationField" placeholder="Enter your phone number..." />
+			<div id="phoneTxtError" class="error"></div>
+			<br>
+			<!-- date -->
+			<label for="birthday">Birthday:</label>
+			<input type="date" id="birthdayDT" name="Birthday" class="authenticationField" max="2000-10-12" min="1900-01-01" />
+			<div id="birthdayDTError" class="error"></div>
+			<br>
+			<!-- dropdown menus -->
+			<label for="gender">Gender:</label>
+			<select id="genderDD" name="Gender" class="authenticationField">
+				<option disabled selected value="Select your gender...">Select your gender...</option>
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+				<option value="Other">Other</option>
+			</select>
+			<div id="genderDDError" class="error"></div>
+
+			<br>
+			<input type="submit" value="Submit">
+		</fieldset>
+
+			<div class="row">
+				<!--bottom left side---------------------------------------------------------->
+				<div class="column" >
+						<button class="settingsBtn" style="background-color:red;">
+							delete account
+						</button>
+				</div>
+				<!--bottom right side--------------------------------------------------------->
+				<div class="column">
+						<button class="settingsBtn" style="background-color:palegoldenrod;">
+								LOGOUT
+						</button>
+				</div>
+			</div>
+
+		<!--end--------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+		<!--========================================footer logout  Dialog========================================================-->
+
+			<dialog class="logoutDialog">
+				<h3>Are you sure you want to logout?</h3>
+				<br />
+				<div class="logoutButtons">
+					<button id="confirmBtn" class="logoutBtn">Confirm<i class="gg-check-o"></i></button>
+					<button id="cancelBtn" class="logoutBtn">Cancel<i class="gg-close-o"></i></button>
+				</div>
+			</dialog>
+		</main>
+		<button type="button" id="topBtn" title="Go to top">^<br />Top</button>
+	<!--========================================footer========================================================-->
+		<footer>
+			<div class="logout">
+				<i class="gg-log-out" id="logoutIcon"></i>
+				<p>Logout</p>
+			</div>
+			<div class="centerFooter">|</div>
+			<div class="contactUs">
+				<p>Contact us:</p>
+				<a href="CMPofficialemail@gmail.com">CMPofficialemail@gmail.com</a>
+			</div>
+		</footer>
+	<!--================================================================================================-->
+	</body>
+</html>

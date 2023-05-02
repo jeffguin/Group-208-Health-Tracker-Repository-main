@@ -1,0 +1,162 @@
+<!--"information" to the browser about what document type to expect. -->
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Dieting Page</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Used to set the browser tab icon to an Apple -->
+		<link rel="icon" href="images/smallLogoCircle.png" />
+		<!-- Link used to get Lato font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<!-- Link used to get mobile navigation bar icon -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<!-- Link used to get logout icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/log-out.css" rel="stylesheet" />
+		<!-- Link used to get back to top icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/push-up.css" rel="stylesheet" />
+		<!-- Link used to get tick icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/check-o.css" rel="stylesheet" />
+		<!-- Link used to get X icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css" rel="stylesheet" />
+		<link rel="stylesheet" href="./css-style/mainStyle.css" />
+		<script type="module" src="./javascript/mainJava.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<div class="mainNavBar">
+				<img id="healthTrackerLogo" src="images/logo-removebg-preview.png" alt="Health Tracker Logo" />
+				<i class="fa fa-bars" id="mobileNavMenu"></i>
+			</div>
+
+			<nav class="navigation">
+				<ul>
+					<li><a href="Home.html">Homepage</a></li>
+					<li><a href="Exercise.html">Exercise</a></li>
+					<li class="currentPage"><a href="Diet.html">Dieting</a></li>
+					<li><a href="Friend.html">Friends</a></li>
+					<li><a href="Group.html">Groups</a></li>
+					<li><a href="History.html">History</a></li>
+					<li><a href="Settings.html">Settings</a></li>
+				</ul>
+			</nav>
+			<i class="fa fa-bars" id="mobileNavMenu"></i>
+		</header>
+		<main>
+			<form id="dietForm">
+				<h1>Diet Tracker</h1>
+				<h2>Fill in fields below to submit your complete meal!</h2>
+				<div id="flexDietContainer">
+					<div id="leftDietContainer">
+						<label for="food-type">Food Type:</label>
+
+						<select id="food-type" class="dietField" name="food-type">
+							<option value="chicken">Chicken</option>
+							<option value="beef">Beef</option>
+							<option value="Pasta">Pasta</option>
+							<option value="Noodles">Noodles</option>
+							<option value="Chicken Soup">Chicken Soup</option>
+							<option value="Mash Potatoes">Mash Potatoes</option>
+							<option value="Pizza">Pizza</option>
+							<option value="Burgers">Burgers</option>
+							<option value="Rice and Fish">Rice and Fish</option>
+							<option value="Spaghetti Bolognese">Spaghetti Bolognese</option>
+							<option value="other">Other</option>
+						</select>
+
+						<label for="calories">Calories:</label>
+						<input type="number" id="caloriesNum" class="dietField" name="calories" />
+
+						<button type="submit" id="addMealBtn" class="dietBtn">Add to Meal</button>
+
+						<!-- date -->
+						<label for="date">Date Consumed:</label>
+						<input type="date" id="mealDT" name="MealDate" class="dietField" max="2000-10-12" min="1900-01-01" />
+
+						<!-- time -->
+						<label for="time">Approximate Time Consumed:</label>
+						<input type="date" id="mealT" name="MealTime" class="dietField" max="2000-10-12" min="1900-01-01" />
+
+						<label for="meal-type">Meal Type:</label>
+						<select id="meal-type" class="dietField" name="meal-type">
+							<option value="breakfast">Breakfast</option>
+							<option value="lunch">Lunch</option>
+							<option value="dinner">Dinner</option>
+							<option value="snack">Snack</option>
+							<option value="other">Other</option>
+						</select>
+
+						<button type="submit" id="finishMealBtn" class="dietBtn">Finish Meal</button>
+					</div>
+					<div id="rightDietContainer">
+						<label for="complete-meal"><h3>Complete Meal with food type and calories:</h3></label>
+						<input type="text" id="completeMealTxt" name="complete-meal" rows="4" disabled />
+					</div>
+				</div>
+			</form>
+			<script>
+				// show/hide the other meal type input field when the other option is selected
+				const mealTypeSelect = document.getElementById("meal-type");
+				const otherMealTypeInput = document.getElementById("other-meal-type");
+				mealTypeSelect.addEventListener("change", () => {
+					if (mealTypeSelect.value === "other") {
+						otherMealTypeInput.style.display = "inline-block";
+					} else {
+						otherMealTypeInput.style.display = "none";
+					}
+				});
+
+				// add custom food and drink items to the lists
+				const foodTypeSelect = document.getElementById("food-type");
+				const drinkTypeSelect = document.getElementById("drink-type");
+				foodTypeSelect.addEventListener("change", () => {
+					if (foodTypeSelect.value === "other") {
+						const customFoodType = prompt("Enter a custom food type:");
+						if (customFoodType) {
+							const newOption = document.createElement("option");
+							newOption.value = customFoodType;
+							newOption.textContent = customFoodType;
+							foodTypeSelect.insertBefore(newOption, foodTypeSelect.lastChild);
+							foodTypeSelect.value = customFoodType;
+						}
+					}
+				});
+				drinkTypeSelect.addEventListener("change", () => {
+					if (drinkTypeSelect.value === "other") {
+						const customDrinkType = prompt("Enter a custom drink type:");
+						if (customDrinkType) {
+							const newOption = document.createElement("option");
+							newOption.value = customDrinkType;
+							newOption.textContent = customDrinkType;
+							drinkTypeSelect.insertBefore(newOption, drinkTypeSelect.lastChild);
+							drinkTypeSelect.value = customDrinkType;
+						}
+					}
+				});
+			</script>
+			<dialog class="logoutDialog">
+				<h3>Are you sure you want to logout?</h3>
+				<br />
+				<div class="logoutButtons">
+					<button id="confirmBtn" class="logoutBtn">Confirm<i class="gg-check-o"></i></button>
+					<button id="cancelBtn" class="logoutBtn">Cancel<i class="gg-close-o"></i></button>
+				</div>
+			</dialog>
+		</main>
+		<button type="button" id="topBtn" title="Go to top">^<br />Top</button>
+
+		<footer>
+			<div class="logout">
+				<i class="gg-log-out" id="logoutIcon"></i>
+				<p>Logout</p>
+			</div>
+			<div class="centerFooter">|</div>
+			<div class="contactUs">
+				<p>Contact us:</p>
+				<a href="CMPofficialemail@gmail.com">CMPofficialemail@gmail.com</a>
+			</div>
+		</footer>
+	</body>
+</html>

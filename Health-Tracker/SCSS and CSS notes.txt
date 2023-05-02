@@ -1,0 +1,25 @@
+// SCSS and CSS NOTES
+
+// :root{
+// 	--variableName:
+// }
+// var(--variableName, defaultOptions)
+
+// &:hover
+// &::after
+// &::before
+
+// _filename and @"./filename" to import scss files
+
+// @mixin functionName to create css functions and @include functionName
+
+// @mixin functionName($parameterName) to create css functions along with functions and @include functionName($parameterName)
+
+// @extend to inherit css from parent mixins (functions)
+
+// @use - used for importing scss file for use within that file
+// @forward - used for importing scss files and spitting them back out
+
+// svh and dvh
+
+// @media (min-width: 40em)

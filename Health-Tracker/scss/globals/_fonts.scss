@@ -1,0 +1,8 @@
+:root {
+	--default-font: "Lato", sans-serif;
+	--default-font-size: clamp(0.8rem, 1.25vw, 1.25rem);
+	--default-font-weight: 500;
+	--default-eye-size: clamp(1rem, 1.2vw, 1.5rem);
+	--default-error-message-size: clamp(0.8rem, 1vw, 1rem);
+	--default-nav-font-size: clamp(0.8rem, 1vw, 1rem);
+}

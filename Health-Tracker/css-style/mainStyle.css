@@ -1,0 +1,694 @@
+:root {
+  --background-colour: rgb(209, 239, 253);
+  --authentication-window-colour: rgb(28, 1, 47);
+  --default-page-font-colour: black;
+  --default-component-font-colour: white;
+  --default-button-colour: rgb(2, 123, 123);
+}
+
+:root {
+  --default-font: "Lato", sans-serif;
+  --default-font-size: clamp(0.8rem, 1.25vw, 1.25rem);
+  --default-font-weight: 500;
+  --default-eye-size: clamp(1rem, 1.2vw, 1.5rem);
+  --default-error-message-size: clamp(0.8rem, 1vw, 1rem);
+  --default-nav-font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-colour);
+  color: var(--default-page-font-colour);
+  font-family: var(--default-font);
+  font-size: var(--default-font-size);
+  font-weight: var(--default-font-weight);
+}
+
+p {
+  padding: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+div .error {
+  font-size: var(--default-error-message-size);
+  color: rgb(187, 5, 5);
+}
+
+header {
+  color: var(--default-component-font-colour);
+}
+
+a {
+  border-bottom: thin solid;
+  color: rgb(4, 136, 212);
+  text-decoration: none;
+  transition: 500ms;
+}
+
+a:active,
+a:hover {
+  font-size: calc(var(--default-nav-font-size) + 1px);
+  color: rgb(14, 124, 0);
+  border-bottom-width: medium;
+  transition: 300ms;
+}
+
+a:active {
+  color: rgb(192, 0, 0);
+}
+
+/*Mixins used to create re-usable styles that can be used across SCSS stylesheets*/
+/*Functions used to create complex and re-usable operations that can be used across SCSS stylesheets*/
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+body main {
+  margin: 3rem;
+}
+body p {
+  margin: 0;
+  padding: 0;
+}
+body h1 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+body h2 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+body h3 {
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: 0;
+}
+body header {
+  font-size: var(--default-nav-font-size);
+  background: var(--authentication-window-colour);
+  border-bottom: #c300ff 6px solid;
+  padding: 1vh 3vw 0 3vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+body header #mobileNavMenu {
+  font-size: 45px;
+  display: none;
+  cursor: pointer;
+  /*Colour of nav menu icon will change to green if the user hovers or focuses on the icon*/
+}
+body header #mobileNavMenu:hover, body header #mobileNavMenu:focus {
+  color: rgb(14, 124, 0);
+  /*Sets a transition duration of 300ms allowing for a smooth expand effect*/
+  transition: 300ms;
+}
+body header ul {
+  padding: 0;
+}
+body header a {
+  color: var(--default-component-font-colour);
+  border: none;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+body header li {
+  padding: 0 10px 0 10px;
+  list-style: none;
+  display: inline-block;
+}
+body header .currentPage a {
+  font-weight: bolder;
+  border-bottom: solid;
+}
+body header #healthTrackerLogo {
+  /*Inherit style from defaultLogoStyle mixin*/
+  max-width: 100%;
+  margin: 1rem;
+  align-self: center;
+}
+body #topBtn {
+  /*Inherit style from backTopButton mixin*/
+  /*Inherit everything from submitButton mixin*/
+  color: var(--default-component-font-colour);
+  background-color: var(--default-button-colour);
+  border: 3px solid white;
+  border-radius: 5px;
+  font-weight: bold;
+  min-height: 2.5rem;
+  width: 30%;
+  /*Position is set to relative to allow "border expand effect" to be placed over the button*/
+  position: relative;
+  align-self: center;
+  cursor: pointer;
+  color: var(--default-page-font-colour);
+  border: 3px solid black;
+  /*Hide back to top button until user scrolls down on page*/
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 1.5%;
+  right: 1.5%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 4px;
+}
+body #topBtn::before {
+  /*Position is set to absolute to allow "border expand effect" to be placed inside the button*/
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /*Z-index is set to -1 to hide the "border expand effect" if button isn't hovered over or focused on*/
+  z-index: -1;
+  border: none;
+  border-radius: 5px;
+  /*Sets a transition duration of 400ms allowing for a smooth expand effect*/
+  transition: 400ms;
+}
+body #topBtn:focus::before, body #topBtn:hover::before {
+  border: 3px solid white;
+  top: -9px;
+  bottom: -9px;
+  right: -9px;
+  left: -9px;
+  /*Z-index is set to 1 to show the "border expand effect" if button if hovered or focused on*/
+  z-index: 1;
+  transition: 200ms;
+}
+body #topBtn:focus::before, body #topBtn:hover::before {
+  border: 3px solid black;
+  top: -9px;
+  bottom: -9px;
+  right: -9px;
+  left: -9px;
+}
+body #topBtn .gg-push-up {
+  color: var(--default-component-font-colour);
+}
+body dialog {
+  /*Inherit style from defaultLogoutDialog mixin*/
+  color: var(--default-component-font-colour);
+  background-color: var(--authentication-window-colour);
+  padding: 1rem;
+  /*Display is initially set to none to ensure logout dialog box is hidden*/
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 40vw;
+  min-height: 30vh;
+  border: 6px #c300ff solid;
+  border-radius: 6px;
+  /*Below code is used to center the logoutContainer in the middle of the page*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*Below above is used to center the logoutContainer in the middle of the page*/
+  /*When the logout dialog is open, apply the fadeIn animation over 600ms*/
+  /*Set the backdrop pseudo element of the logout dialog to a pale dark colour*/
+  /*When the logout dialog is open, apply the fadeIn animation over 600ms to its backdrop pseudo element*/
+  /*Basic custom animation to fade in the logout dialog*/
+}
+body dialog .logoutButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  /*Inherit style from logoutButton mixin*/
+}
+body dialog .logoutButtons .logoutBtn {
+  /*Inherit everything from submitButton mixin*/
+  color: var(--default-component-font-colour);
+  background-color: var(--default-button-colour);
+  border: 3px solid white;
+  border-radius: 5px;
+  font-weight: bold;
+  min-height: 2.5rem;
+  width: 30%;
+  /*Position is set to relative to allow "border expand effect" to be placed over the button*/
+  position: relative;
+  align-self: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body dialog .logoutButtons .logoutBtn::before {
+  /*Position is set to absolute to allow "border expand effect" to be placed inside the button*/
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /*Z-index is set to -1 to hide the "border expand effect" if button isn't hovered over or focused on*/
+  z-index: -1;
+  border: none;
+  border-radius: 5px;
+  /*Sets a transition duration of 400ms allowing for a smooth expand effect*/
+  transition: 400ms;
+}
+body dialog .logoutButtons .logoutBtn:focus::before, body dialog .logoutButtons .logoutBtn:hover::before {
+  border: 3px solid white;
+  top: -9px;
+  bottom: -9px;
+  right: -9px;
+  left: -9px;
+  /*Z-index is set to 1 to show the "border expand effect" if button if hovered or focused on*/
+  z-index: 1;
+  transition: 200ms;
+}
+body dialog .logoutButtons .logoutBtn .gg-check-o,
+body dialog .logoutButtons .logoutBtn .gg-close-o {
+  margin-left: 3px;
+}
+body dialog .logoutButtons .logoutBtn#confirmBtn {
+  color: greenyellow;
+}
+body dialog .logoutButtons .logoutBtn#cancelBtn {
+  color: rgb(189, 5, 5);
+}
+body dialog[open] {
+  animation: fadeIn 600ms;
+}
+body dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+body dialog[open]::backdrop {
+  animation: fadeIn 600ms;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body #dietForm {
+  background: white;
+  border: 4px solid #c300ff;
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+body #dietForm #flexDietContainer {
+  border: 2px dashed yellow;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+body #dietForm #flexDietContainer .dietBtn {
+  color: black;
+  background-color: var(--default-button-colour);
+  border: 3px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+  min-height: 2.5rem;
+  align-self: flex-start;
+  width: 70%;
+  cursor: pointer;
+  position: relative;
+}
+body #dietForm #flexDietContainer .dietBtn::before {
+  content: "";
+  border: 6px solid red;
+  /*Position is set to absolute to allow "border expand effect" to be placed inside the button*/
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /*Z-index is set to -1 to hide the "border expand effect" if button isn't hovered over or focused on*/
+  z-index: -1;
+  border: none;
+  border-radius: 5px;
+  /*Sets a transition duration of 400ms allowing for a smooth expand effect*/
+  transition: transform 400ms ease-in-out;
+  transform: scaleX(0);
+}
+body #dietForm #flexDietContainer .dietBtn:focus::before, body #dietForm #flexDietContainer .dietBtn:hover::before {
+  transition: transform 200ms ease-in-out;
+  /*Z-index is set to 1 to show the "border expand effect" if button if hovered or focused on*/
+  z-index: 1;
+  transform: scaleX(1);
+}
+body #dietForm #flexDietContainer #leftDietContainer {
+  border: 2px solid rgb(156, 156, 255);
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+body #dietForm #flexDietContainer #rightDietContainer {
+  border: 2px solid red;
+  padding: 1rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+body #dietForm #flexDietContainer #rightDietContainer #completeMealTxt {
+  width: 100%;
+  height: 20vh;
+}
+body #dietForm .dietField {
+  color: var(--default-font-colour);
+  width: 70%;
+  height: 3vh;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  background-color: transparent;
+  border: solid 1px black;
+}
+body .homeContainer {
+  border: 3px solid blue;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: space-around;
+}
+body .homeDiv {
+  background-color: goldenrod;
+  border: 3px solid black;
+  width: 40%;
+  height: 10rem;
+}
+body .profileContainer {
+  border: 3px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  height: 10rem;
+  width: 40%;
+  overflow: hidden;
+}
+body .profileContainer #profilePicture {
+  max-width: 100%;
+  max-height: 100%;
+}
+body footer {
+  /*Inherit style from defaultFooter mixin*/
+  background: var(--authentication-window-colour);
+  color: var(--default-component-font-colour);
+  border-top: #c300ff 6px solid;
+  /*Margin-top is set to auto to ensure footer is "stuck to the bottom of the page"*/
+  margin-top: auto;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body footer .logout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+}
+body footer .logout:hover, body footer .logout:focus {
+  color: rgb(202, 0, 0);
+  border-bottom: solid;
+  /*Sets a transition duration of 300ms allowing for a smooth expand effect*/
+  transition: 300ms;
+}
+body footer .logout #logoutIcon {
+  margin: 0;
+  /*Ensures a 15px space between Logout text and logoutIcon*/
+  margin-right: 15px;
+}
+body footer .contactUs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+body footer .contactUs a {
+  /*Ensures a 4.4px space between Contact Us: text and the email*/
+  margin-left: 4.4px;
+}
+
+/*-----------Media Queries for responsive design-----------*/
+/*Applies special rules to devices under 1245.5px*/
+@media screen and (max-width: 1245.5px) {
+  body header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  body header nav {
+    width: 100%;
+  }
+  body header nav ul {
+    display: none;
+    flex-direction: column;
+    padding: 0;
+  }
+  body header nav li {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  header .mainNavBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .mainNavBar #mobileNavMenu {
+    display: flex;
+  }
+  body header nav ul.show {
+    display: flex;
+  }
+  body header #healthTrackerLogo {
+    max-width: 80%;
+    align-self: self-start;
+  }
+}
+/*Applies special rules to to devices under 500px*/
+@media screen and (max-width: 500px) {
+  body header #mobileNavMenu {
+    font-size: 30px;
+  }
+}
+/*Applies special rules to to devices under 800px*/
+@media screen and (max-width: 800px) {
+  body main dialog {
+    padding: 0;
+    width: 70vw;
+  }
+}
+/*Applies special rules to to devices under 440px*/
+@media screen and (max-width: 440px) {
+  /*Logout icons are hidden onces the device viewport gets to small*/
+  body main dialog .logoutButtons .gg-check-o,
+  body main dialog .logoutButtons .gg-close-o {
+    display: none;
+  }
+}/*# sourceMappingURL=mainStyle.css.map */
+
+
+
+
+
+/*===========code for group.html and friend.html===============*/
+.split{
+  float: left;
+  width: 30%;
+  height: 100vh;
+  background: skyblue;
+  padding: 20px;
+}
+
+.split ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  height: 100vh;
+  background-color: transparent;
+}
+
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/*end*/
+/*===========code for group.html===============*/
+
+ /*#tutorial {*/
+ /*  visibility: hidden;*/
+ /*  background-color: #76D7C4 ;*/
+ /*  color: black;*/
+ /*  width: 100px;*/
+ /*  height: 100px;*/
+ /*}*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: orange;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+input:checked + .slider {
+  background-color: limegreen;
+}
+
+/*------ ADDED CSS ---------*/
+.on
+{
+  display: none;
+}
+
+.on, .off
+{
+  color: black;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  font-size: 10%;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked+ .slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+
+/*===========code for Settings.html===============*/
+.settingsBox{
+  border-radius: 15px;
+  border-width: 5px;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  border-color: #7ea854;
+  background-color: white;
+}
+
+.settingsLegend{
+  padding: 5px 20px;
+  margin-bottom: 5px;
+  background-color: green;
+  color: white;
+}
+
+.settingsBtn{
+  text-align: center;
+  border-color: #7ea854;
+  background-color: white;
+  height: 50px;
+  width: 140px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  height: 100px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.vertical-center {
+  justify-content: center;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+
+
+
+
+
+
+K

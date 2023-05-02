@@ -1,0 +1,179 @@
+<!--"information" to the browser about what document type to expect. -->
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Group Page</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Used to set the browser tab icon to an Apple -->
+		<link rel="icon" href="images/smallLogoCircle.png" />
+		<!-- Link used to get Lato font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<!-- Link used to get mobile navigation bar icon -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<!-- Link used to get logout icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/log-out.css" rel="stylesheet" />
+		<!-- Link used to get back to top icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/push-up.css" rel="stylesheet" />
+		<!-- Link used to get tick icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/check-o.css" rel="stylesheet" />
+		<!-- Link used to get X icon -->
+		<link href="https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css" rel="stylesheet" />
+		<link rel="stylesheet" href="./css-style/mainStyle.css" />
+		<script type="module" src="./javascript/mainJava.js" defer></script>
+	</head>
+
+
+
+	<body>
+		<header>
+			<div class="mainNavBar">
+				<img id="healthTrackerLogo" src="images/logo-removebg-preview.png" alt="Health Tracker Logo" />
+				<i class="fa fa-bars" id="mobileNavMenu"></i>
+			</div>
+
+			<nav class="navigation">
+				<ul>
+					<li><a href="Home.html">Homepage</a></li>
+					<li><a href="Exercise.html">Exercise</a></li>
+					<li><a href="Diet.html">Dieting</a></li>
+					<li><a href="Friend.html">Friends</a></li>
+					<li class="currentPage"><a href="Group.html">Groups</a></li>
+					<li><a href="History.html">History</a></li>
+					<li><a href="Settings.html">Settings</a></li>
+				</ul>
+			</nav>
+			<i class="fa fa-bars" id="mobileNavMenu"></i>
+		</header>
+
+
+
+		<!-- ==========================================Content======================================================-->
+		<main>
+
+					<section>
+
+			<!--left side---------------------------------------------------------->
+			<nav class="split">
+				<h2>View groups /create group/ join groups</h2>
+				<br>
+
+
+					<select name="choose" id="choose">
+						<option value="viewGroups">View groups</option>
+						<option value="createGroup">Create group</option>
+						<option value="joinGroup">Join a group</option>
+					</select>
+				<br>
+				<br>
+				<br>
+
+
+					<div class="row">
+						<div class="col-md-5 col-xl-4">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Profile Settings</h5>
+								</div>
+								<div class="list-group list-group-flush" role="tablist">
+									<a class="list-group-item list-group-item-action active" data-toggle="list" href="#account" role="tab">
+										Account
+									</a>
+									<br>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
+										Password
+									</a>
+									<br>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+										Delete account
+									</a>
+									<br>
+								</div>
+							</div>
+						</div>
+
+
+						<br>
+				<br>
+				<br>
+				<label class="switch">
+					<input type="checkbox" id="togBtn"/>
+					<div class="slider round">
+						<span class="on">Friends</span>
+						<span class="off">Requests</span>
+					</div>
+				</label>
+
+
+
+			</nav>
+
+			<!--right side--------------------------------------------------------->
+			<article>
+				<div id="view">
+					supposed to fetch groups names and display here
+					<br>
+					supposed to fetch groups DETAILS according to name selected and display here
+				</div>
+				<div id="create">create group form here</div>
+				<div id="join">join group form here, will fetch group names for joining</div>
+			</article>
+
+
+			<script>
+				const choose = document.getElementById('choose');
+				const view = document.getElementById('view');
+				const create = document.getElementById('create');
+				const join = document.getElementById('join');
+				view.style.visibility = 'visible';
+				create.style.visibility = 'hidden';
+				join.style.visibility = 'hidden';
+
+				choose.addEventListener('change', function handleChange(event) {
+					if (event.target.value === 'viewGroups') {
+						view.style.visibility = 'visible';
+						create.style.visibility = 'hidden';
+						join.style.visibility = 'hidden';
+					} else
+						if (event.target.value === 'createGroup') {
+							view.style.visibility = 'hidden';
+							create.style.visibility = 'visible';
+							join.style.visibility = 'hidden';
+					} else
+						if (event.target.value === 'joinGroup') {
+							view.style.visibility = 'hidden';
+							create.style.visibility = 'hidden';
+							join.style.visibility = 'visible';
+					}
+				});
+			</script>
+
+		</section>
+		<!--========================================footer logout  Dialog========================================================-->
+			<dialog class="logoutDialog">
+				<h3>Are you sure you want to logout?</h3>
+				<br />
+				<div class="logoutButtons">
+					<button id="confirmBtn" class="logoutBtn">Confirm<i class="gg-check-o"></i></button>
+					<button id="cancelBtn" class="logoutBtn">Cancel<i class="gg-close-o"></i></button>
+				</div>
+			</dialog>
+		</main>
+		<button type="button" id="topBtn" title="Go to top">^<br />Top</button>
+		<!--========================================footer========================================================-->
+		<footer>
+			<div class="logout">
+				<i class="gg-log-out" id="logoutIcon"></i>
+				<p>Logout</p>
+			</div>
+			<div class="centerFooter">|</div>
+			<div class="contactUs">
+				<p>Contact us:</p>
+				<a href="CMPofficialemail@gmail.com">CMPofficialemail@gmail.com</a>
+			</div>
+		</footer>
+		<!--================================================================================================-->
+	</body>
+</html>
