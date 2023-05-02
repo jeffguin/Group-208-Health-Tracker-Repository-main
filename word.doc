@@ -1,0 +1,11 @@
+Functionality:
+
+1)Responsive design added to pages (different appearance based on device screen size)
+    Custom navbar on main pages for mobile devices
+2)Added animation to certain elements including buttons, navbar, links, eye icons
+    Created custom "fade in" animation for logout dialog box
+3)Validation on register form
+    username, password, confirm password, phone, email
+    custom phone, email, and check password REGEX
+4)Added show/hide password eye icons
+5)Page scrolls up to logout dialog box when clicked

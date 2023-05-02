@@ -1,0 +1,20 @@
+@forward "globals"; @use "components" as c; body { display: flex; flex-direction: column; min-height: 100vh; position: relative; main { margin: 3rem; } p {
+margin: 0; padding: 0; } header { font-size: var(--default-nav-font-size); background: var(--authentication-window-colour); border-bottom: #c300ff 6px solid;
+padding: 1vh 3vw 0 3vw; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end; position: relative; } header #mobileNavMenu {
+font-size: 45px; display: none; cursor: pointer; /*Colour of nav menu icon will change to green if the user hovers or focuses on the icon*/ &:hover, &:focus {
+color: rgb(14, 124, 0); /*Sets a transition duration of 300ms allowing for a smooth expand effect*/ transition: 300ms; } } header ul { padding: 0; } header a {
+color: var(--default-component-font-colour); border: none; text-decoration: none; text-transform: uppercase; } header li { padding: 0 10px 0 10px; list-style:
+none; display: inline-block; } header .currentPage a { font-weight: bolder; border-bottom: solid; } #healthTrackerLogo { /*Inherit style from defaultLogoStyle
+mixin*/ @include c.defaultLogoStyle; } #topBtn { /*Inherit style from backTopButton mixin*/ @include c.backTopButton; } .submitBtn { /*Inherit style from
+submitButton mixin*/ @include c.submitButton; } dialog { /*Inherit style from defaultLogoutDialog mixin*/ @include c.defaultLogoutDialog; } #dietForm { display:
+flex; flex-direction: column; background: white; border: 3px solid #c300ff; padding: 1rem; } .dietField { color: var(--default-font-colour); width: 50%; height:
+3vh; margin-top: 0.5rem; border-radius: 5px; background-color: transparent; border: solid 1px black; } .homeContainer { border: 3px solid blue; margin: 1rem;
+padding: 1rem; display: flex; flex-direction: row; flex-wrap: wrap; gap: 5px; justify-content: space-around; } .homeDiv { background-color: goldenrod; border:
+3px solid black; width: 40%; height: 10rem; } .profileContainer { border: 3px solid red; display: flex; flex-direction: row; justify-content: flex-start;
+align-items: flex-start; gap: 2rem; height: 10rem; width: 40%; overflow: hidden; #profilePicture { max-width: 100%; max-height: 100%; } } footer { /*Inherit
+style from defaultFooter mixin*/ @include c.defaultFooter; } } /*Applies special rules to to devices under 1245.5px*/ @media screen and (max-width: 1245.5px) {
+body header { flex-direction: column; align-items: flex-start; } body header nav { width: 100%; } body header nav ul { display: none; flex-direction: column;
+padding: 0; } body header nav li { text-align: center; padding-bottom: 1rem; } header .mainNavBar { width: 100%; display: flex; flex-direction: row;
+justify-content: space-between; align-items: center; } header .mainNavBar #mobileNavMenu { display: flex; } body header nav ul.show { display: flex; } body
+header #healthTrackerLogo { max-width: 80%; align-self: self-start; } } /*Applies special rules to to devices under 500px*/ @media screen and (max-width: 500px)
+{ body header #mobileNavMenu { font-size: 30px; } }
